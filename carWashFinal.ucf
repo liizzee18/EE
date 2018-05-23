@@ -1,0 +1,49 @@
+############################################################################
+## This carWash.ucf file is has been modified to be used along carWashFinal.v
+## and it will itilize an external clock. It will also display the current
+## state of the car wash machine. Utilizes 3 switches and 2 buttons.
+############################################################################
+
+## Switches
+Net "platinum_program" LOC="E14" | IOSTANDARD = LVCMOS33;//SW5
+Net "extra_cleaning_program" LOC="D16"   | IOSTANDARD = LVCMOS33;//SW6
+Net "basic_program" LOC="B16"           | IOSTANDARD = LVCMOS33;//SW7
+
+## Buttons
+Net "reset_program" LOC="C13" | IOSTANDARD = LVCMOS33;//BTN0
+Net "coin" LOC="C10" | IOSTANDARD = LVCMOS33;//BTN3
+
+
+## Clock on GPI029 
+Net "clk" LOC="R2" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;
+
+## Right Segments
+Net "Rssd[6]" LOC="E3" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGA R
+Net "Rssd[5]" LOC="E1" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGB R
+Net "Rssd[4]" LOC="G5" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGC R
+Net "Rssd[3]" LOC="D1" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGD R
+Net "Rssd[2]" LOC="E4" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGE R
+Net "Rssd[1]" LOC="C1" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGF R
+Net "Rssd[0]" LOC="C2" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGG R
+
+## Left Segments
+Net "Lssd[6]" LOC="H6" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGA L
+Net "Lssd[5]" LOC="K2" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGB L
+Net "Lssd[4]" LOC="H3" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGC L
+Net "Lssd[3]" LOC="K1" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGD L
+Net "Lssd[2]" LOC="G4" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGE L
+Net "Lssd[1]" LOC="J2" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGF L
+Net "Lssd[0]" LOC="G3" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8;//SEGG L
+
+## Clock dedicated as false 
+NET "clk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+##NOT USED##
+#Net "sys_clk_pin" LOC="B8";
+#Net "sys_clk_pin" IOSTANDARD = LVCMOS33;
+## System level constraints
+#Net "sys_clk_pin" TNM_NET = sys_clk_pin;
+#TIMESPEC TS_sys_clk_pin = PERIOD "sys_clk_pin" 20000 ps;
+
+
